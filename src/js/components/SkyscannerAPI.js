@@ -1,8 +1,8 @@
 
 class SkyscannerAPI {
-  constructor(host, apikey){
-    this.URL = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/GBP/en-GB/?query=Stockholm";
-    this.host = host;
+  constructor(apikey){
+    this.URL = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/US/USD/en-US/?query=Hawaii";
+    this.host = "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com";
     this.apikey = apikey;
     this.location_id;
     // create

@@ -4,7 +4,5 @@ class App{
     this.tripAdvisorAPI = tripAdvisorAPI;
     this.destinationForm = destinationForm;
     this.destinationInformation = destinationInformation;
-
-
   }
 }
