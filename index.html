@@ -9,28 +9,58 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="https://player.vimeo.com/external/226624964.hd.mp4?s=af4fddb43ec3de8c446f7b421fa15f8a5501115e&profile_id=175&autoplay=1&loop=1&controls=1"></iframe>
+  <header class="overflow-hidden">
+    <div class="overlay h-100 w-100"></div>
+    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+      <source src="./assets/video/banner-background.mp4" type="video/mp4">
+    </video>
+    <div class="container">
+      <div class="row w-100 d-flex h-100 align-items-center">
+        <h1 class="display-3 w-100 text-white text-center ml-5 mr-5">Video Header</h1>
+      </div>
+      <div class="row w-100 d-flex h-100 align-items-center text-white text-center">
+        <form class="w-100" id="destinationForm">
+          <div class="form-group">
+            <label for="destination">Please enter a destination</label>
+            <input type="text" class="form-control" placeholder="Hawaii" id="destination" aria-describedby="destinationHelp">
+            <small id="destinationHelp">Where would you like your next adventure to take
+              you?</small>
+          </div>
+          <button type="submit" class="btn btn-outline-info border-0 col-1 align-self-end" id="submit-location">Lets Go!</button>
+        </form>
       </div>
     </div>
-    <div class="row justify-content-center" id="destinationForm">
-      <form class="col-8">
-        <div class="form-group">
-          <label for="destination">Please enter a destination</label>
-          <input type="text" class="form-control" placeholder="Hawaii" id="destination" aria-describedby="destinationHelp">
-          <small id="destinationHelp" class="form-text text-muted">Where would you like your next adventure to take you?</small>
+  </header>
+
+  <section class="my-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <p>The HTML5 video element uses an mp4 video as a source. Change the source video to add in your own background!
+            The header text is vertically centered using flex utilities that are build into Bootstrap 4.</p>
+          <p>The overlay color can be changed by changing the <code>background-color</code> of the <code>.overlay</code>
+            class in the CSS.</p>
+          <p>Set the mobile fallback image in the CSS by changing the background image of the header element within the
+            media query at the bottom of the CSS snippet.</p>
+          <p class="mb-0">
+            Created by <a href="https://startbootstrap.com">Start Bootstrap</a>
+          </p>
         </div>
-        <button type="submit" class="btn btn-outline-info border-0 align-self-end">Lets Go!</button>
-      </form>
+      </div>
     </div>
-    <div class="row justify-content-center" id="destinationInformation">
-      <div></div>
+  </section>
+
+  <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+    <div class="container col-2">
+      <small>Video with courtasy of</small>
+      <a href="https://pixabay.com/videos/landscape-travel-blue-tropical-35757/">
+        <img src="./assets/images/pixabay_logo_square.svg" alt="" class="col-3">
+      </a>
     </div>
-  </div>
+  </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  <script src="./src/js/components/DestinationInfo.js"></script>
   <script src="./src/js/components/DestinationForm.js"></script>
   <script src="./src/js/PixabayVideoAPI.js"></script>
   <script src="./src/js/SkyscannerAPI.js"></script>
