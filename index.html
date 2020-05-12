@@ -10,31 +10,29 @@
 </head>
 <body>
   <div class="container">
-    <div class="row">
-      <img src="..." class="img-fluid" alt="Responsive image">
+    <div class="row justify-content-center">
+      <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="https://player.vimeo.com/external/226624964.hd.mp4?s=af4fddb43ec3de8c446f7b421fa15f8a5501115e&profile_id=175&autoplay=1&loop=1&controls=1"></iframe>
+      </div>
     </div>
-    <div class="row">
-      <form>
+    <div class="row justify-content-center" id="destinationForm">
+      <form class="col-8">
         <div class="form-group">
           <label for="destination">Please enter a destination</label>
-          <input type="text" class="form-control" id="destination" aria-describedby="destinationHelp">
+          <input type="text" class="form-control" placeholder="Hawaii" id="destination" aria-describedby="destinationHelp">
           <small id="destinationHelp" class="form-text text-muted">Where would you like your next adventure to take you?</small>
         </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-outline-info border-0 align-self-end">Lets Go!</button>
       </form>
+    </div>
+    <div class="row justify-content-center" id="destinationInformation">
+      <div></div>
     </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
-  <script src="./src/js/UserInfoForm.js"></script>
+  <script src="./src/js/components/DestinationForm.js"></script>
+  <script src="./src/js/PixabayVideoAPI.js"></script>
   <script src="./src/js/SkyscannerAPI.js"></script>
   <script src="./src/js/TripAdvisorAPI.js"></script>
   <script src="main.js"></script>
