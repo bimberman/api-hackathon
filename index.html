@@ -4,29 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>API Hackathon</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <title>API Hackathon</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/css/bootstrap.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="overflow-hidden">
+  <header class="overflow-hidden d-flex align-items-center">
     <div class="overlay h-100 w-100"></div>
     <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
       <source src="./assets/video/banner-background.mp4" type="video/mp4">
     </video>
     <div class="container">
-      <div class="row w-100 d-flex h-100 align-items-center">
-        <h1 class="display-3 w-100 text-white text-center ml-5 mr-5">Video Header</h1>
+      <div class="row w-100 d-flex h-100 align-items-center justify-content-center">
+        <h1 class="display-3 text-white text-center" id="company-name">TravelWise</h1>
       </div>
-      <div class="row w-100 d-flex h-100 align-items-center text-white text-center">
-        <form class="w-100" id="destinationForm">
-          <div class="form-group">
+      <div class="row w-100 d-flex h-100 align-items-center justify-content-center text-white text-center">
+        <form class="w-50" id="destinationForm">
+          <div class="form-group mb-0">
             <label for="destination">Please enter a destination</label>
             <input type="text" class="form-control" placeholder="Hawaii" id="destination" aria-describedby="destinationHelp">
             <small id="destinationHelp">Where would you like your next adventure to take
               you?</small>
           </div>
-          <button type="submit" class="btn btn-outline-info border-0 col-1 align-self-end" id="submit-location">Lets Go!</button>
+          <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-outline-info" id="submit-location">Lets Go!</button>
+          </div>
         </form>
       </div>
     </div>
@@ -36,22 +41,23 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 mx-auto">
-          <p>The HTML5 video element uses an mp4 video as a source. Change the source video to add in your own background!
-            The header text is vertically centered using flex utilities that are build into Bootstrap 4.</p>
-          <p>The overlay color can be changed by changing the <code>background-color</code> of the <code>.overlay</code>
-            class in the CSS.</p>
-          <p>Set the mobile fallback image in the CSS by changing the background image of the header element within the
-            media query at the bottom of the CSS snippet.</p>
-          <p class="mb-0">
-            Created by <a href="https://startbootstrap.com">Start Bootstrap</a>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero,
+            soluta asperiores vero nihil consectetur obcaecati possimus! Ducimus
+            quasi, tenetur eos dolorem corporis debitis ratione corrupti voluptate.
+            Quis corporis officiis debitis.
+          </p>
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
-    <div class="container col-2">
+  <footer id="sticky-footer" class="bg-dark text-white-50 d-flex justify-content-between align-items-center">
+    <div class="col-2">
+      <img src="./assets/images/travelwise-logo3.png" alt="" class="col-6">
+    </div>
+    <div class="col-2 offset-3">
       <small>Video with courtasy of</small>
       <a href="https://pixabay.com/videos/landscape-travel-blue-tropical-35757/">
         <img src="./assets/images/pixabay_logo_square.svg" alt="" class="col-3">

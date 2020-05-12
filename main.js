@@ -4,4 +4,4 @@ var destinationInformationElement = document.getElementById("destinationInformat
 
 var skyscanner = new SkyscannerAPI();
 var tripAdvisor = new TripAdvisorAPI();
-var pixabay = new PixabayVideoAPI(bannerElement);s
+var app = new App(skyscanner, tripAdvisor, destinationFormElement, destinationInformationElement);
