@@ -65,7 +65,7 @@ class TripAdvisorAPI {
         "x-rapidapi-key": this.apikey
       },
       data: {
-        limit: 11,
+        limit: 10,
         lang: "en_US",
         currency: "USD",
         sort: "recommended",
