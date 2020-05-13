@@ -1,35 +1,73 @@
 
 class TripAdvisorAPI {
-  constructor(host, apikey) {
-    this.URL = "https://tripadvisor1.p.rapidapi.com/locations/search?limit=30&sort=relevance&offset=0&lang=en_US&currency=USD&units=km&query=pattaya";
-    this.host = host;
+  constructor(apikey) {
+    this.locationSearchURL = "https://tripadvisor1.p.rapidapi.com/locations/search";
+    this.attractionsURL = "https://tripadvisor1.p.rapidapi.com/attractions/list";
+    this.host = "tripadvisor1.p.rapidapi.com";
     this.apikey = apikey;
 
-    this.getTripAdvisor = this.getTripAdvisor.bind(this);
-    this.handlegetTripAdvisorSuccess = this.handlegetTripAdvisorSuccess.bind(this);
-    this.handlegetTripAdvisorError = this.handlegetTripAdvisorError.bind(this);
+    this.getTripAdvisorDestination = this.getTripAdvisorDestination.bind(this);
+    this.handlegetTripAdvisorDestinationSuccess = this.handlegetTripAdvisorDestinationSuccess.bind(this);
+    this.handlegetTripAdvisorDestinationError = this.handlegetTripAdvisorDestinationError.bind(this);
   }
 
-  getTripAdvisor() {
+  getTripAdvisorDestination() {
     $.ajax({
       "async": true,
       "crossDomain": true,
-      "url": this.URL,
+      "url": this.locationSearchURL,
       "method": "GET",
       "headers": {
         "x-rapidapi-host": this.host,
         "x-rapidapi-key": this.apikey
       },
-      success: this.handlegetTripAdvisorSuccess,
-      error: this.handlegetTripAdvisorError
+      data:{
+        limit: 1,
+        query: "Los Angeles"
+      },
+      success: this.handlegetTripAdvisorDestinationSuccess,
+      error: this.handlegetTripAdvisorDestinationError
     });
   }
 
-  handlegetTripAdvisorSuccess(success) {
+  handlegetTripAdvisorDestinationSuccess(success) {
     console.log(success);
   }
 
-  handlegetTripAdvisorError(err) {
+  handlegetTripAdvisorDestinationError(err) {
+    console.log(err);
+  }
+
+  getAttractions(destinationId) {
+    $.ajax({
+      "async": true,
+      "crossDomain": true,
+      "url": this.attractionsURL,
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-host": this.host,
+        "x-rapidapi-key": this.apikey
+      },
+      data: {
+        limit: 10,
+        lang: "en_US",
+        currency: "USD",
+        sort: "recommended",
+        lunits: "km",
+        min_rating: 4,
+        subcategory: "admission tickets",
+        location_id: destinationId
+      },
+      success: this.handlegetAttractionsSuccess,
+      error: this.handlegetAttractionsError
+    });
+  }
+
+  handlegetAttractionsSuccess(success) {
+    console.log(success);
+  }
+
+  handlegetAttractionsError(err) {
     console.log(err);
   }
 }
