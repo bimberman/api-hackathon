@@ -25,6 +25,23 @@ header .overlay {
   z-index: 1;
 }
 
+.cover{
+  height: 300px;
+  width: 300px;
+  background-size: cover;
+  background-position: center;
+}
+
+.attraction-link{
+  width: 142px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  align-items: center;
+  font-size: 1rem;
+}
+
 #company-name{
   font-family: 'Pacifico', cursive;;
 }

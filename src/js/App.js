@@ -18,7 +18,7 @@ class App{
   }
 
   setUserDestination(destination){
-    destinationGallery.updateTitle(destination);
+    destinationGallery.updateCity(destination);
   }
   setDestinationId(destinationId){
     this.destinationId = destinationId;
