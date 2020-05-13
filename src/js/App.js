@@ -1,15 +1,26 @@
 class App{
-  constructor(skyscannerAPI, tripAdvisorAPI, destinationForm, destinationTable){
+  constructor(skyscannerAPI, tripAdvisorAPI, destinationForm, destinationGallery){
     this.skyscannerAPI = skyscannerAPI;
     this.tripAdvisorAPI = tripAdvisorAPI;
     this.destinationForm = destinationForm;
-    this.destinationTable = destinationTable;
+    this.destinationGallery = destinationGallery;
 
-    this.getTripAdvisorDestination = this.tripAdvisorAPI.getTripAdvisorDestination;
-    this.getAttractions = this.tripAdvisorAPI.getAttractions;
+    this.setDestinationId = this.setDestinationId.bind(this);
+    this.setUserDestination = this.setUserDestination.bind(this);
   }
 
   start() {
-    this.destinationForm.onSubmit(this.getTripAdvisorDestination)
+    this.destinationForm.onSubmit(this.tripAdvisorAPI.getTripAdvisorDestination);
+    this.destinationForm.setAppUserDestination(this.setUserDestination);
+
+    this.tripAdvisorAPI.sendDestinationId(this.setDestinationId);
+    this.tripAdvisorAPI.updateGallery(this.destinationGallery.updateGallery);
+  }
+
+  setUserDestination(destination){
+    destinationGallery.updateTitle(destination);
+  }
+  setDestinationId(destinationId){
+    this.destinationId = destinationId;
   }
 }

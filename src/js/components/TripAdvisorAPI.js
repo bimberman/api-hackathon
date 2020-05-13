@@ -5,13 +5,26 @@ class TripAdvisorAPI {
     this.attractionsURL = "https://tripadvisor1.p.rapidapi.com/attractions/list";
     this.host = "tripadvisor1.p.rapidapi.com";
     this.apikey = apikey;
+    this.self = this;
 
     this.getTripAdvisorDestination = this.getTripAdvisorDestination.bind(this);
     this.handlegetTripAdvisorDestinationSuccess = this.handlegetTripAdvisorDestinationSuccess.bind(this);
     this.handlegetTripAdvisorDestinationError = this.handlegetTripAdvisorDestinationError.bind(this);
+
+    this.getAttractions = this.getAttractions.bind(this);
+    this.handleGetAttractionsSuccess = this.handleGetAttractionsSuccess.bind(this);
+    this.handleGetAttractionsError = this.handleGetAttractionsError.bind(this);
   }
 
-  getTripAdvisorDestination() {
+  updateGallery(galleryUpdateFunction){
+    this.galleryUpdateFunction = galleryUpdateFunction;
+  }
+
+  sendDestinationId(setDestinationId){
+    this.setDestinationId = setDestinationId;
+  }
+
+  getTripAdvisorDestination(destination) {
     $.ajax({
       "async": true,
       "crossDomain": true,
@@ -23,7 +36,7 @@ class TripAdvisorAPI {
       },
       data:{
         limit: 1,
-        query: "Los Angeles"
+        query: destination
       },
       success: this.handlegetTripAdvisorDestinationSuccess,
       error: this.handlegetTripAdvisorDestinationError
@@ -32,6 +45,9 @@ class TripAdvisorAPI {
 
   handlegetTripAdvisorDestinationSuccess(success) {
     console.log(success);
+    this.destinationId = success.data[0].result_object.location_id;
+    this.destination = success.data[0].result_object.name;
+    this.getAttractions(this.destinationId);
   }
 
   handlegetTripAdvisorDestinationError(err) {
@@ -49,25 +65,27 @@ class TripAdvisorAPI {
         "x-rapidapi-key": this.apikey
       },
       data: {
-        limit: 10,
+        limit: 11,
         lang: "en_US",
         currency: "USD",
         sort: "recommended",
         lunits: "km",
         min_rating: 4,
-        subcategory: "admission tickets",
-        location_id: destinationId
+        category: "attractions",
+        subcatagory: "museums",
+        location_id: parseInt(this.destinationId)
       },
-      success: this.handlegetAttractionsSuccess,
-      error: this.handlegetAttractionsError
+      success: this.handleGetAttractionsSuccess,
+      error: this.handleGetAttractionsError
     });
   }
 
-  handlegetAttractionsSuccess(success) {
+  handleGetAttractionsSuccess(success) {
     console.log(success);
+    this.galleryUpdateFunction(success.data, this.destination);
   }
 
-  handlegetAttractionsError(err) {
+  handleGetAttractionsError(err) {
     console.log(err);
   }
 }
