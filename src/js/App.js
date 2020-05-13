@@ -5,11 +5,17 @@ class App{
     this.destinationForm = destinationForm;
     this.destinationTable = destinationTable;
 
-    this.getTripAdvisorDestination = this.tripAdvisorAPI.getTripAdvisorDestination;
-    this.getAttractions = this.tripAdvisorAPI.getAttractions;
+    this.setDestinationId = this.setDestinationId.bind(this);
   }
 
   start() {
-    this.destinationForm.onSubmit(this.getTripAdvisorDestination)
+    this.destinationForm.onSubmit(this.tripAdvisorAPI.getTripAdvisorDestination);
+    this.updateTable = this.destinationTable.updateTable;
+    this.tripAdvisorAPI.sendDestinationId(this.setDestinationId);
+    this.tripAdvisorAPI.updateTable(this.updateTable);
+  }
+
+  setDestinationId(destinationId){
+    this.destinationId = destinationId;
   }
 }

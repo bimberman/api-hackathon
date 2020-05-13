@@ -14,7 +14,7 @@ class DestinationForm{
     let formData = new FormData(event.target);
     let userDestination = formData.get("destination") ||
                           this.destinationForm.querySelector("input[name='destination']").placeholder;
-    let ajaxDestination = this.getTripAdvisorDestination(userDestination);
+    this.getTripAdvisorDestination(userDestination);
     event.target.reset();
   }
 }
