@@ -6,31 +6,31 @@ class SkyscannerAPI {
     this.apikey = apikey;
     this.location_id;
     // create
-    this.getSkyscanner = this.getSkyscanner.bind(this);
-    this.handlegetSkyscannerSuccess = this.handlegetSkyscannerSuccess.bind(this);
-    this.handlegetSkyscannerError = this.handlegetSkyscannerError.bind(this);
+    this.testSkyscanner = this.testSkyscanner.bind(this);
+    this.handletestSkyscannerSuccess = this.handletestSkyscannerSuccess.bind(this);
+    this.handletestSkyscannerError = this.handletestSkyscannerError.bind(this);
   }
 
-  getSkyscanner() {
+  testSkyscanner() {
     $.ajax({
       "async": true,
       "crossDomain": true,
       "url": this.URL,
-      "method": "GET",
+      "method": "test",
       "headers": {
         "x-rapidapi-host": this.host,
         "x-rapidapi-key": this.apikey
       },
-      success: this.handlegetSkyscannerSuccess,
-      error: this.handlegetSkyscannerError
+      success: this.handletestSkyscannerSuccess,
+      error: this.handletestSkyscannerError
     });
   }
 
-  handlegetSkyscannerSuccess(success) {
+  handletestSkyscannerSuccess(success) {
     console.log(success);
   }
 
-  handlegetSkyscannerError(err) {
+  handletestSkyscannerError(err) {
     console.log(err);
   }
 }
