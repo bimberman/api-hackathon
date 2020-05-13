@@ -16,8 +16,8 @@ class TripAdvisorAPI {
     this.handleGetAttractionsError = this.handleGetAttractionsError.bind(this);
   }
 
-  updateTable(tableUpdateFunction){
-    this.tableUpdateFunction = tableUpdateFunction;
+  updateGallery(galleryUpdateFunction){
+    this.galleryUpdateFunction = galleryUpdateFunction;
   }
 
   sendDestinationId(setDestinationId){
@@ -46,6 +46,7 @@ class TripAdvisorAPI {
   handlegetTripAdvisorDestinationSuccess(success) {
     console.log(success);
     this.destinationId = success.data[0].result_object.location_id;
+    this.destination = success.data[0].result_object.name;
     this.getAttractions(this.destinationId);
   }
 
@@ -81,7 +82,7 @@ class TripAdvisorAPI {
 
   handleGetAttractionsSuccess(success) {
     console.log(success);
-    this.tableUpdateFunction(success.data);
+    this.galleryUpdateFunction(success.data, this.destination);
   }
 
   handleGetAttractionsError(err) {
