@@ -28,7 +28,7 @@ class DestinationForm{
       italic.textContent = "city";
       this.labelDestinationElement.appendChild(italic);
       this.setUserDestination(userDestination);
-      // this.getTripAdvisorDestination(userDestination);
+      this.getTripAdvisorDestination(userDestination);
       this.getSkyscannerDestination(userDestination);
     } else {
       this.inputDestinationElement.placeholder = "New York";

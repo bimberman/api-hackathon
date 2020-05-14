@@ -20,6 +20,9 @@ class SkyscannerAPI {
   sendPrices(appSetPrices){
     this.setAppPrices = appSetPrices;
   }
+  updatePrice(destinationGalleryUpdatePrice){
+    this.destinationGalleryUpdatePrice = destinationGalleryUpdatePrice;
+  }
 
   getSkyscannerDestination(destination) {
     $.ajax({

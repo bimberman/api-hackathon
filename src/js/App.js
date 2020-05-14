@@ -36,6 +36,7 @@ class App{
         this.prices.push(data.Quotes[quoteIndex].MinPrice);
       }
     }
+    destinationGallery.updateFlightPrice(this.getMinPrice());
   }
 
   getMinPrice(){
