@@ -42,6 +42,10 @@ header .overlay {
   font-size: 1rem;
 }
 
+i{
+  text-decoration: underline;
+}
+
 #company-name{
   font-family: 'Pacifico', cursive;;
 }

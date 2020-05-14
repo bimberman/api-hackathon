@@ -17,6 +17,10 @@ class SkyscannerAPI {
     this.handleGetPricesError = this.handleGetPricesError.bind(this);
   }
 
+  sendPrices(appSetPrices){
+    this.setAppPrices = appSetPrices;
+  }
+
   getSkyscannerDestination(destination) {
     $.ajax({
       "async": true,
@@ -62,6 +66,7 @@ class SkyscannerAPI {
 
   handleGetPricesSuccess(success) {
     console.log(success);
+    this.setAppPrices(success);
   }
 
   handleGetPricesError(err) {

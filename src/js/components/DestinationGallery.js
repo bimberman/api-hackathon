@@ -6,6 +6,10 @@ class DestinationGallery {
     this.flightInfo = flightInfo;
   }
 
+  updateFlightPrices(){
+
+  }
+
   updateGallery(data){
     let row = document.createElement("div");
     let destinationDiv;

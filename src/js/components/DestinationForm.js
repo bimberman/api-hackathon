@@ -23,14 +23,16 @@ class DestinationForm{
     let userDestination = formData.get("destination") ||
                           this.inputDestinationElement.placeholder;
     if(userDestination){
-      this.labelDestinationElement.textContent = "Please enter a destination";
-      this.inputDestinationElement.placeholder = "";
+      this.labelDestinationElement.textContent = "Please enter a ";
+      let italic = document.createElement("i");
+      italic.textContent = "city";
+      this.labelDestinationElement.appendChild(italic);
       this.setUserDestination(userDestination);
       // this.getTripAdvisorDestination(userDestination);
       this.getSkyscannerDestination(userDestination);
     } else {
-      this.inputDestinationElement.placeholder = "Los Angeles";
-      this.labelDestinationElement.textContent = "Please enter a valid destination. Example: Los Angeles.";
+      this.inputDestinationElement.placeholder = "New York";
+      this.labelDestinationElement.textContent = "Please enter a valid city. Example: Los Angeles.";
     }
     event.target.reset();
   }
