@@ -1,36 +1,70 @@
 
 class SkyscannerAPI {
   constructor(apikey){
-    this.URL = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/US/USD/en-US/?query=Hawaii";
+    this.locationURL = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/US/USD/en-US/";
+    this.priceURLBase = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/LAXA-sky/"
+    this.priceURLDates = "/2020-08-01?inboundpartialdate=2020-08-02";
     this.host = "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com";
     this.apikey = apikey;
     this.location_id;
-    // create
-    this.testSkyscanner = this.testSkyscanner.bind(this);
-    this.handletestSkyscannerSuccess = this.handletestSkyscannerSuccess.bind(this);
-    this.handletestSkyscannerError = this.handletestSkyscannerError.bind(this);
+
+    this.getSkyscannerDestination = this.getSkyscannerDestination.bind(this);
+    this.handleSkyscannerDestinationSuccess = this.handleSkyscannerDestinationSuccess.bind(this);
+    this.handleSkyscannerDestinationError = this.handleSkyscannerDestinationError.bind(this);
+
+    this.getPrices = this.getPrices.bind(this);
+    this.handleGetPricesSuccess = this.handleGetPricesSuccess.bind(this);
+    this.handleGetPricesError = this.handleGetPricesError.bind(this);
   }
 
-  testSkyscanner() {
+  getSkyscannerDestination(destination) {
     $.ajax({
       "async": true,
       "crossDomain": true,
-      "url": this.URL,
-      "method": "test",
+      "url": this.locationURL,
+      "method": "GET",
       "headers": {
         "x-rapidapi-host": this.host,
         "x-rapidapi-key": this.apikey
       },
-      success: this.handletestSkyscannerSuccess,
-      error: this.handletestSkyscannerError
+      data: {
+        query: destination
+      },
+      success: this.handleSkyscannerDestinationSuccess,
+      error: this.handleSkyscannerDestinationError
     });
   }
 
-  handletestSkyscannerSuccess(success) {
+  handleSkyscannerDestinationSuccess(success) {
+    console.log(success);
+    this.destination = success.Places[0].PlaceId;
+    this.getPrices(this.destination);
+  }
+
+  handleSkyscannerDestinationError(err) {
+    console.log(err);
+  }
+
+  getPrices(destination) {
+    $.ajax({
+      "async": true,
+      "crossDomain": true,
+      "url": this.priceURLBase + destination + this.priceURLDates,
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-host": this.host,
+        "x-rapidapi-key": this.apikey
+      },
+      success: this.handleGetPricesSuccess,
+      error: this.handleGetPricesError
+    });
+  }
+
+  handleGetPricesSuccess(success) {
     console.log(success);
   }
 
-  handletestSkyscannerError(err) {
+  handleGetPricesError(err) {
     console.log(err);
   }
 }

@@ -1,8 +1,9 @@
 class DestinationGallery {
-  constructor(destinationGallery, galleryTitle) {
+  constructor(destinationGallery, galleryTitle, flightInfo) {
     this.destinationGallery = destinationGallery;
     this.updateGallery = this.updateGallery.bind(this);
     this.galleryTitle = galleryTitle;
+    this.flightInfo = flightInfo;
   }
 
   updateGallery(data){
@@ -87,15 +88,18 @@ class DestinationGallery {
 
   updateCity(destination){
     if(destination){
-      this.galleryTitle.classList.remove("d-none")
-      let spanElement = this.galleryTitle.querySelector("span");
-      spanElement.textContent = destination;
+      this.galleryTitle.classList.remove("d-none");
+      this.flightInfo.classList.remove("d-none");
+      this.galleryTitle.querySelector("span").textContent = destination;
+      this.flightInfo.querySelector("span").textContent = destination;
+
       this.updateTitle("Finding Attractions in ");
       while (this.destinationGallery.firstChild) {
         this.destinationGallery.removeChild(this.destinationGallery.lastChild);
       }
     } else {
       this.galleryTitle.classList.add("d-none");
+      this.flightInfo.classList.add("d-none");
     }
   }
 

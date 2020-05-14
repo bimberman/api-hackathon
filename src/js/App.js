@@ -10,7 +10,8 @@ class App{
   }
 
   start() {
-    this.destinationForm.onSubmit(this.tripAdvisorAPI.getTripAdvisorDestination);
+    this.destinationForm.onSubmit(this.tripAdvisorAPI.getTripAdvisorDestination,
+                                  this.skyscannerAPI.getSkyscannerDestination);
     this.destinationForm.setAppUserDestination(this.setUserDestination);
 
     this.tripAdvisorAPI.sendDestinationId(this.setDestinationId);
