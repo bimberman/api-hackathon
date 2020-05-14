@@ -8,8 +8,9 @@ class DestinationForm{
     this.labelDestinationElement = this.destinationForm.querySelector("label[for='destination']");
   }
 
-  onSubmit(getTripAdvisorDestination) {
+  onSubmit(getTripAdvisorDestination, getSkyscannerDestination) {
     this.getTripAdvisorDestination = getTripAdvisorDestination;
+    this.getSkyscannerDestination = getSkyscannerDestination;
   }
 
   setAppUserDestination(setUserDestination){
@@ -25,7 +26,8 @@ class DestinationForm{
       this.labelDestinationElement.textContent = "Please enter a destination";
       this.inputDestinationElement.placeholder = "";
       this.setUserDestination(userDestination);
-      this.getTripAdvisorDestination(userDestination);
+      // this.getTripAdvisorDestination(userDestination);
+      this.getSkyscannerDestination(userDestination);
     } else {
       this.inputDestinationElement.placeholder = "Los Angeles";
       this.labelDestinationElement.textContent = "Please enter a valid destination. Example: Los Angeles.";
