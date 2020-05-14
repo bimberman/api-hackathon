@@ -45,9 +45,13 @@ class TripAdvisorAPI {
 
   handlegetTripAdvisorDestinationSuccess(success) {
     console.log(success);
-    this.destinationId = success.data[0].result_object.location_id;
-    this.destination = success.data[0].result_object.name;
-    this.getAttractions(this.destinationId);
+    if(success && success.data && success.data.length){
+      this.destinationId = success.data[0].result_object.location_id;
+      this.destination = success.data[0].result_object.name;
+      this.getAttractions(this.destinationId);
+    } else {
+      this.galleryUpdateFunction(null);
+    }
   }
 
   handlegetTripAdvisorDestinationError(err) {
@@ -82,7 +86,7 @@ class TripAdvisorAPI {
 
   handleGetAttractionsSuccess(success) {
     console.log(success);
-    this.galleryUpdateFunction(success.data, this.destination);
+    this.galleryUpdateFunction(success.data);
   }
 
   handleGetAttractionsError(err) {
