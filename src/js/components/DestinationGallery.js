@@ -6,10 +6,6 @@ class DestinationGallery {
     this.flightInfo = flightInfo;
   }
 
-  updateFlightPrices(){
-
-  }
-
   updateGallery(data){
     let row = document.createElement("div");
     let destinationDiv;
@@ -39,15 +35,10 @@ class DestinationGallery {
           imageUrl = null;
           tripAdvisorLink = null;
           attractionLink = null;
-          this.updateTitle("Destination: ");
+          this.updateAttractionTitle("Destination: ");
         }
       }
     }
-  }
-
-  createRow(data){
-
-
   }
 
   createDestinationDiv(name, imageUrl, tripAdvisorLink, attractionLink){
@@ -97,7 +88,7 @@ class DestinationGallery {
       this.galleryTitle.querySelector("span").textContent = destination;
       this.flightInfo.querySelector("span").textContent = destination;
 
-      this.updateTitle("Finding Attractions in ");
+      this.updateAttractionTitle("Finding attractions in ");
       while (this.destinationGallery.firstChild) {
         this.destinationGallery.removeChild(this.destinationGallery.lastChild);
       }
@@ -107,11 +98,26 @@ class DestinationGallery {
     }
   }
 
-  updateTitle(title){
+  updateAttractionTitle(title){
     if (title) {
-      let spanElement = this.galleryTitle.querySelector("span");
+      let citySpanElement = this.galleryTitle.querySelector("span.city");
       this.galleryTitle.textContent = title;
-      this.galleryTitle.appendChild(spanElement);
+      this.galleryTitle.appendChild(citySpanElement);
     }
+  }
+  updateFlightTitle(title) {
+    if (title) {
+      let citySpanElement = this.flightInfo.querySelector("span.city");
+      let priceSpanElement = this.flightInfo.querySelector("span.price");
+      this.flightInfo.textContent = title;
+      this.flightInfo.append(citySpanElement);
+      this.flightInfo.textContent += " start at ";
+      this.flightInfo.append(priceSpanElement);
+      this.flightInfo.textContent += " USD";
+    }
+  }
+  updateFlightPrices(minPrice) {
+    this.flightInfo.querySelector("span.price").textContent = minPrice;
+    this.updateFlightTitle("Flights to ");
   }
 }

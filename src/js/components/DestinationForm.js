@@ -32,7 +32,7 @@ class DestinationForm{
       this.getSkyscannerDestination(userDestination);
     } else {
       this.inputDestinationElement.placeholder = "New York";
-      this.labelDestinationElement.textContent = "Please enter a valid city. Example: Los Angeles.";
+      this.labelDestinationElement.textContent = "Please enter a valid city. Example: New York.";
     }
     event.target.reset();
   }
