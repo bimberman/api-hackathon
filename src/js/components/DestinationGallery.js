@@ -1,10 +1,8 @@
 class DestinationGallery {
-  constructor(destinationGallery, galleryTitle, flightInfo) {
+  constructor(destinationGallery, galleryTitle) {
     this.destinationGallery = destinationGallery;
     this.updateGallery = this.updateGallery.bind(this);
-    this.updateFlightPrice = this.updateFlightPrice.bind(this);
     this.galleryTitle = galleryTitle;
-    this.flightInfo = flightInfo;
   }
 
   updateGallery(data){
@@ -86,19 +84,15 @@ class DestinationGallery {
 
   updateCity(destination){
     if(destination){
-      this.galleryTitle.classList.remove("d-none");
-      this.flightInfo.classList.remove("d-none");
+      this.displayElement(this.galleryTitle);
       this.galleryTitle.querySelector("span.city").textContent = destination;
-      this.flightInfo.querySelector("span.city").textContent = destination;
 
       this.updateAttractionTitle("Finding attractions in ");
-      this.updateFlightTitle("Finding flight prices from LAX to");
       while (this.destinationGallery.firstChild) {
         this.destinationGallery.removeChild(this.destinationGallery.lastChild);
       }
     } else {
-      this.galleryTitle.classList.add("d-none");
-      this.flightInfo.classList.add("d-none");
+      this.hideElement(this.galleryTitle);
     }
   }
 
@@ -108,41 +102,12 @@ class DestinationGallery {
     this.galleryTitle.textContent = "";
     this.galleryTitle.append(textNode, citySpanElement);
   }
-  updateFlightTitle(title, hasPrice) {
-    let citySpanElement = this.flightInfo.querySelector("span.city");
-    let priceSpanElement = this.flightInfo.querySelector("span.price");
-    let textNode1 = document.createTextNode("");
-    let textNode2 = document.createTextNode("");
-    let textNode3 = document.createTextNode("");
 
-    if (title && hasPrice) {
-      textNode1.textContent = title;
-      textNode2.textContent = " start at ";
-      textNode3.textContent = " USD";
-
-      this.flightInfo.textContent = "";
-      this.flightInfo.append(textNode1, citySpanElement, textNode2, priceSpanElement, textNode3);
-    } else if (title && !hasPrice){
-      textNode1.textContent = "Finding flight prices from LAX to ";
-      textNode2.textContent = " as well";
-
-      priceSpanElement.textContent = "";
-      this.flightInfo.textContent = "";
-      this.flightInfo.append(textNode1, citySpanElement, priceSpanElement,textNode2);
-    } else if(!title && !hasPrice){
-      textNode1.textContent = "No flights available between LAX and ";
-
-      priceSpanElement.textContent = "";
-      this.flightInfo.textContent = "";
-      this.flightInfo.append(textNode1, citySpanElement, priceSpanElement);
-    }
+  displayElement(element) {
+    element.classList.remove("d-none");
   }
-  updateFlightPrice(minPrice) {
-    if (minPrice){
-      this.flightInfo.querySelector("span.price").textContent = minPrice;
-      this.updateFlightTitle("Flights to ", true);
-    } else {
-      this.updateFlightTitle(0,false);
-    }
+
+  hideElement(element) {
+    element.classList.add("d-none");
   }
 }

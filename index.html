@@ -23,14 +23,23 @@
       </div>
       <div class="row w-100 d-flex h-100 align-items-center justify-content-center text-white text-center">
         <form class="w-50" id="destination-form">
-          <div class="form-group mb-0">
-            <label for="destination">Please enter a <i>city</i></label>
-            <input type="text" class="form-control" placeholder="New York" name="destination" aria-describedby="destinationHelp">
-            <small id="destinationHelp">Where would you like your next adventure to take
-              you?</small>
+          <div class="form-group mb-3">
+            <label for="origin" class="d-none h5">Please enter your origin and destination <i>cities</i></label>
+            <input type="text" class="form-control d-none" placeholder="Los Angeles" name="origin" aria-describedby="origin-help">
+            <small id="origin-help" class="d-none h6">What city will you depart from?</small>
           </div>
-          <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-outline-info" id="submit-location">Lets Go!</button>
+          <div class="form-group mb-0">
+            <label for="destination" class="h5">Please enter your destination <i>city</i></label>
+            <input type="text" class="form-control" placeholder="New York" name="destination" aria-describedby="destination-help">
+            <small id="destination-help" class="h6">Where would you like your next adventure to take you?</small>
+          </div>
+          <div class="form-group my-3 d-flex justify-content-end align-content-center">
+            <label for="submit-location" class="h6 mt-2"><i></i></label>
+            <button type="submit" class="btn btn-outline-info offset-1" name="submit-location" id="submit-location">Lets Go!</button>
+          </div>
+          <div class="form-group my-5 d-flex justify-content-end d-none">
+            <label for="price" class="h4 d-none"></label>
+            <button type="submit" class="btn btn-outline-info offset-1 text-white d-none" id="submit-price">View on Skyscanner</button>
           </div>
         </form>
       </div>
@@ -39,9 +48,8 @@
 
   <section class="my-5">
     <div class="container">
-      <div class="row d-flex justify-content-between">
+      <div class="row d-flex justify-content-center">
           <h3 class="d-none" id="gallery-title">Finding attractions in <span class="city"></span></h3>
-          <h3 class="d-none" id="flight-info">Finding flight prices from LAX to <span class="city"></span><span class="price"></span> as well</h3>
       </div>
       <div class="row d-flex justify-content-center" id="destination-gallery">
 
