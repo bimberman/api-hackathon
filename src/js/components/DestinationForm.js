@@ -13,7 +13,7 @@ class DestinationForm{
     this.updatePrice = this.updatePrice.bind(this);
     this.isHidden = this.isHidden.bind(this);
 
-    // Flight Destination
+    // Destination Element
     this.inputDestinationElement = this.destinationForm.querySelector("input[name='destination']");
     this.inputDestinationElement.addEventListener("focus", this.handleDestinationFocus);
     this.inputDestinationElement.addEventListener("blur", this.handleDestinationBlur);
@@ -39,10 +39,6 @@ class DestinationForm{
   handleSubmitDestination(event) {
     event.preventDefault();
 
-    // this.displayElement(this.inputOriginElement);
-    // this.displayElement(this.labelOriginElement);
-    // this.displayElement(this.helperTextOriginElement);
-
     let formData = new FormData(event.target);
     const userDestination = formData.get("destination") ||
                           this.inputDestinationElement.placeholder;
@@ -53,7 +49,6 @@ class DestinationForm{
         this.setAppsUserDestination(this.userInputDestination);
         this.getTripAdvisorDestination(this.userInputDestination);
       }
-      // this.hideElement(this.labelSubmitLocation);
       this.destinationForm.removeEventListener("submit", this.handleSubmitDestination);
       this.destinationForm.addEventListener("submit", this.handleSubmitFlight);
     } else if (!userDestination){
@@ -83,8 +78,6 @@ class DestinationForm{
     } else {
       this.inputDestinationElement.placeholder = "New York";
       this.labelDestinationElement.textContent = "Please enter a valid city. Example: New York.";
-      // this.inputOriginElement.placeholder = "Los Angeles";
-      // this.labelOriginElement.textContent = "Please enter a valid city. Example: Los Angeles.";
     }
 
     this.labelPriceElement
@@ -144,7 +137,6 @@ class DestinationForm{
 
     this.buttonLetsGoElement.textContent = `Lets Go!`
     if(userDestination===this.userInputDestination && this.wasClicked){
-      // this.userOrigin = this.inputOriginElement.value || this.inputOriginElement.placeholder;
       this.labelSubmitLocation.textContent = `Lets find some flights from ${this.userOrigin} to ${this.userInputDestination}`;
       this.destinationForm.addEventListener("submit", this.handleSubmitFlight);
     } else {
