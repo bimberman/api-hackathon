@@ -1,4 +1,5 @@
 class DestinationForm{
+
   constructor(destinationForm){
     this.destinationForm = destinationForm;
 
@@ -13,13 +14,11 @@ class DestinationForm{
     this.updatePrice = this.updatePrice.bind(this);
     this.isHidden = this.isHidden.bind(this);
 
-    // Destination Element
     this.inputDestinationElement = this.destinationForm.querySelector("input[name='destination']");
     this.inputDestinationElement.addEventListener("focus", this.handleDestinationFocus);
     this.inputDestinationElement.addEventListener("blur", this.handleDestinationBlur);
     this.labelDestinationElement = this.destinationForm.querySelector("label[for='destination']");
 
-    // GO GO GO
     this.buttonLetsGoElement = document.getElementById("submit-location");
     this.labelSubmitLocation = this.destinationForm.querySelector("label[for='submit-location']");
 

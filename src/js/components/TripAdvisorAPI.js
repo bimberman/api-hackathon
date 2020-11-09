@@ -1,4 +1,3 @@
-
 class TripAdvisorAPI {
   constructor(apikey) {
     this.locationSearchURL = "https://tripadvisor1.p.rapidapi.com/locations/search";

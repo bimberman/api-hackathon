@@ -1,4 +1,3 @@
-
 class SkyscannerAPI {
   constructor(apikey){
     this.locationURL = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/US/USD/en-US/";
