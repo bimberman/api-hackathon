@@ -24,14 +24,18 @@ class DestinationForm{
     this.labelSubmitLocation = this.destinationForm.querySelector("label[for='submit-location']");
 
     // Flight origin
-    this.inputOriginElement = this.destinationForm.querySelector("input[name='origin']");
-    this.inputOriginElement.addEventListener("focus", this.handleOriginFocus);
-    this.inputOriginElement.addEventListener("blur", this.handleOriginBlur);
-    this.labelOriginElement = this.destinationForm.querySelector("label[for='origin']");
-    this.helperTextOriginElement = document.getElementById("origin-help");
+    // this.inputOriginElement = this.destinationForm.querySelector("input[name='origin']");
+    // this.inputOriginElement.addEventListener("focus", this.handleOriginFocus);
+    // this.inputOriginElement.addEventListener("blur", this.handleOriginBlur);
+    // this.labelOriginElement = this.destinationForm.querySelector("label[for='origin']");
+    // this.helperTextOriginElement = document.getElementById("origin-help");
 
     // Flight Prices
     this.buttonViewFlightsElement = document.getElementById("submit-price");
+    this.buttonViewFlightsElement.addEventListener("click", function () {
+      window.open(
+        "https://www.skyscanner.com/", "_blank");
+      });
     this.labelPriceElement = this.destinationForm.querySelector("label[for='price']");
 
     this.wasClicked = false;
@@ -51,9 +55,9 @@ class DestinationForm{
   handleSubmitDestination(event) {
     event.preventDefault();
 
-    this.displayElement(this.inputOriginElement);
-    this.displayElement(this.labelOriginElement);
-    this.displayElement(this.helperTextOriginElement);
+    // this.displayElement(this.inputOriginElement);
+    // this.displayElement(this.labelOriginElement);
+    // this.displayElement(this.helperTextOriginElement);
 
     let formData = new FormData(event.target);
     const userDestination = formData.get("destination") ||
@@ -92,11 +96,12 @@ class DestinationForm{
       this.hideElement(this.labelSubmitLocation);
       this.setAppsUserDestination(this.userInputDestination);
       this.getSkyscannerDestination(this.userInputDestination);
+      this.getTripAdvisorDestination(this.userInputDestination);
     } else {
       this.inputDestinationElement.placeholder = "New York";
       this.labelDestinationElement.textContent = "Please enter a valid city. Example: New York.";
-      this.inputOriginElement.placeholder = "Los Angeles";
-      this.labelOriginElement.textContent = "Please enter a valid city. Example: Los Angeles.";
+      // this.inputOriginElement.placeholder = "Los Angeles";
+      // this.labelOriginElement.textContent = "Please enter a valid city. Example: Los Angeles.";
     }
 
     this.labelPriceElement
@@ -156,7 +161,7 @@ class DestinationForm{
 
     this.buttonLetsGoElement.textContent = `Lets Go!`
     if(userDestination===this.userInputDestination && this.wasClicked){
-      this.userOrigin = this.inputOriginElement.value || this.inputOriginElement.placeholder;
+      // this.userOrigin = this.inputOriginElement.value || this.inputOriginElement.placeholder;
       this.labelSubmitLocation.textContent = `Lets find some flights from ${this.userOrigin} to ${this.userInputDestination}`;
       this.destinationForm.addEventListener("submit", this.handleSubmitFlight);
     } else {

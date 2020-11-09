@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,68 +12,62 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <header class="overflow-hidden d-flex align-items-center">
-    <div class="overlay h-100 w-100"></div>
-    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-      <source src="./assets/video/banner-background.mp4" type="video/mp4">
-    </video>
-    <div class="container">
-      <div class="row w-100 d-flex h-100 align-items-center justify-content-center">
-        <h1 class="display-3 text-white text-center" id="company-name">TravelWise</h1>
+  <div class="d-flex flex-column" style="height:100vh">
+    <header class="overflow-hidden d-flex align-items-center">
+      <div class="overlay h-100 w-100"></div>
+      <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+        <source src="./assets/video/banner-background.mp4" type="video/mp4">
+      </video>
+      <div class="container">
+        <div class="row w-100 d-flex h-100 align-items-center justify-content-center">
+          <h1 class="display-4 text-white text-center" id="company-name">TravelWise</h1>
+        </div>
+        <div class="row m-0 w-100 d-flex h-100 align-items-center justify-content-center text-white text-center">
+          <form id="destination-form">
+            <div class="form-group mb-0">
+              <label for="destination" class="h5">Please enter your destination <i>city</i></label>
+              <input type="text" class="form-control" placeholder="New York" name="destination"
+                aria-describedby="destination-help">
+              <small id="destination-help" class="h6">Where would you like your next adventure to take you?</small>
+            </div>
+            <div class="form-group my-3 d-flex justify-content-end align-content-center">
+              <label for="submit-location" class="h6 mt-2"></label>
+              <button type="submit" class="btn btn-outline-info offset-1" name="submit-location"
+                id="submit-location">Lets Go!</button>
+            </div>
+            <div class="form-group my-5 d-flex justify-content-end d-none">
+              <label for="price" class="h4 d-none"></label>
+              <button type="submit" class="btn btn-outline-info offset-1 text-white d-none" id="submit-price">Lets find some flights!</button>
+            </div>
+          </form>
+        </div>
       </div>
-      <div class="row w-100 d-flex h-100 align-items-center justify-content-center text-white text-center">
-        <form class="w-50" id="destination-form">
-          <div class="form-group mb-3">
-            <label for="origin" class="d-none h5">Please enter your origin and destination <i>cities</i></label>
-            <input type="text" class="form-control d-none" placeholder="Los Angeles" name="origin" aria-describedby="origin-help">
-            <small id="origin-help" class="d-none h6">What city will you depart from?</small>
-          </div>
-          <div class="form-group mb-0">
-            <label for="destination" class="h5">Please enter your destination <i>city</i></label>
-            <input type="text" class="form-control" placeholder="New York" name="destination" aria-describedby="destination-help">
-            <small id="destination-help" class="h6">Where would you like your next adventure to take you?</small>
-          </div>
-          <div class="form-group my-3 d-flex justify-content-end align-content-center">
-            <label for="submit-location" class="h6 mt-2"><i></i></label>
-            <button type="submit" class="btn btn-outline-info offset-1" name="submit-location" id="submit-location">Lets Go!</button>
-          </div>
-          <div class="form-group my-5 d-flex justify-content-end d-none">
-            <label for="price" class="h4 d-none"></label>
-            <button type="submit" class="btn btn-outline-info offset-1 text-white d-none" id="submit-price">View on Skyscanner</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </header>
+    </header>
 
-  <section class="my-5">
-    <div class="container">
-      <div class="row d-flex justify-content-center">
+    <section class="mt-auto">
+      <div class="container">
+        <div class="row d-flex justify-content-center">
           <h3 class="d-none" id="gallery-title">Finding attractions in <span class="city"></span></h3>
-      </div>
-      <div class="row d-flex justify-content-center" id="destination-gallery">
+        </div>
+        <div class="row d-flex justify-content-center" id="destination-gallery">
 
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer id="sticky-footer" class="">
-    <div class="row bg-dark text-white-50 w-100 d-flex justify-content-around align-items-center m-0 p-0">
-      <div class="col-2">
-        <a href="http://127.0.0.1:5500/index.html">
-          <img src="./assets/images/travelwise-logo6.png" alt="" class="col-8">
-        </a>
+    <footer id="sticky-footer" class="align-self-end w-100">
+      <div class="row bg-dark text-white-50 w-100 d-flex justify-content-end m-0 p-0">
+        <div class="d-flex justify-content-end">
+          <p class="col-lg-4 text-right p-0 m-2">Video with courtesy of</p>
+          <a href="https://pixabay.com/videos/landscape-travel-blue-tropical-35757/" target="_blank" class="col-2 m-0 p-0">
+            <img src="./assets/images/pixabay_logo_square.svg" alt="" class="col-8 m-0 p-0">
+          </a>
+        </div>
       </div>
-      <div class="col-3">
-        <small>Video with courtesy of</small>
-        <a href="https://pixabay.com/videos/landscape-travel-blue-tropical-35757/" target="_blank">
-          <img src="./assets/images/pixabay_logo_square.svg" alt="" class="col-3">
-        </a>
-      </div>
-    </div>
-  </footer>
-
+    </footer>
+  </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
   <script src="./src/js/Config.js"></script>
   <script src="./src/js/components/DestinationGallery.js"></script>
@@ -82,4 +77,5 @@
   <script src="./src/js/App.js"></script>
   <script src="main.js"></script>
 </body>
+
 </html>

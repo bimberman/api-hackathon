@@ -14,6 +14,7 @@ class TripAdvisorAPI {
     this.getAttractions = this.getAttractions.bind(this);
     this.handleGetAttractionsSuccess = this.handleGetAttractionsSuccess.bind(this);
     this.handleGetAttractionsError = this.handleGetAttractionsError.bind(this);
+    this.handleGetAttractionsComplete = this.handleGetAttractionsComplete.bind(this);
   }
 
   updateGallery(galleryUpdateFunction){
@@ -80,16 +81,22 @@ class TripAdvisorAPI {
         location_id: parseInt(this.destinationId)
       },
       success: this.handleGetAttractionsSuccess,
-      error: this.handleGetAttractionsError
+      error: this.handleGetAttractionsError,
+      complete: this.handleGetAttractionsComplete
     });
   }
 
   handleGetAttractionsSuccess(success) {
-    console.log(success);
     this.galleryUpdateFunction(success.data);
   }
 
   handleGetAttractionsError(err) {
     console.log(err);
+  }
+
+  handleGetAttractionsComplete(obj, status) {
+    if (status === "success"){
+
+    }
   }
 }
