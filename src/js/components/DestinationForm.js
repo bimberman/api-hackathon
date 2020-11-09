@@ -135,14 +135,8 @@ class DestinationForm{
     const userDestination = event.target.value || event.target.placeholder;
 
     this.buttonLetsGoElement.textContent = `Lets Go!`
-    if(userDestination===this.userInputDestination && this.wasClicked){
-      this.labelSubmitLocation.textContent = `Lets find some flights from ${this.userOrigin} to ${this.userInputDestination}`;
-      this.destinationForm.addEventListener("submit", this.handleSubmitFlight);
-    } else {
-      this.destinationForm.addEventListener("submit", this.handleSubmitDestination);
-      this.hideElement(this.buttonViewFlightsElement);
-      this.hideElement(this.labelPriceElement);
-    }
+    this.labelSubmitLocation.textContent = `Lets find some flights from ${this.userOrigin} to ${this.userInputDestination}`;
+    this.destinationForm.addEventListener("submit", this.handleSubmitFlight);
   }
 
   updatePrice(price){
