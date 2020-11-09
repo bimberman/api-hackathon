@@ -1,6 +1,5 @@
 class App{
-  constructor(skyscannerAPI, tripAdvisorAPI, destinationForm, destinationGallery){
-    this.skyscannerAPI = skyscannerAPI;
+  constructor(tripAdvisorAPI, destinationForm, destinationGallery){
     this.tripAdvisorAPI = tripAdvisorAPI;
     this.destinationForm = destinationForm;
     this.destinationGallery = destinationGallery;
@@ -12,14 +11,12 @@ class App{
   }
 
   start() {
-    this.destinationForm.onSubmit(this.tripAdvisorAPI.getTripAdvisorDestination,
-                                  this.skyscannerAPI.getSkyscannerDestination);
+    this.destinationForm.onSubmit(this.tripAdvisorAPI.getTripAdvisorDestination);
     this.destinationForm.setAppUserDestination(this.setUserDestination);
 
     this.tripAdvisorAPI.sendDestinationId(this.setDestinationId);
     this.tripAdvisorAPI.updateGallery(this.destinationGallery.updateGallery);
 
-    this.skyscannerAPI.sendPrices(this.setPrices);
   }
 
   setUserDestination(destination){

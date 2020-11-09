@@ -6,7 +6,6 @@ var galleryTitleElement = document.getElementById("gallery-title");
 var config = new Config();
 var destinationForm = new DestinationForm(destinationFormElement);
 var destinationGallery = new DestinationGallery(destinationGalleryElement, galleryTitleElement);
-var skyscanner = new SkyscannerAPI(config.apikey_Skyscanner);
 var tripAdvisor = new TripAdvisorAPI(config.apikey_TripAdvisor_fake_fake);
-var app = new App(skyscanner, tripAdvisor, destinationForm, destinationGallery);
+var app = new App(tripAdvisor, destinationForm, destinationGallery);
 app.start();

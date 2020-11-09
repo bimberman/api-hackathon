@@ -23,29 +23,13 @@ class DestinationForm{
     this.buttonLetsGoElement = document.getElementById("submit-location");
     this.labelSubmitLocation = this.destinationForm.querySelector("label[for='submit-location']");
 
-    // Flight origin
-    // this.inputOriginElement = this.destinationForm.querySelector("input[name='origin']");
-    // this.inputOriginElement.addEventListener("focus", this.handleOriginFocus);
-    // this.inputOriginElement.addEventListener("blur", this.handleOriginBlur);
-    // this.labelOriginElement = this.destinationForm.querySelector("label[for='origin']");
-    // this.helperTextOriginElement = document.getElementById("origin-help");
-
-    // Flight Prices
-    this.buttonViewFlightsElement = document.getElementById("submit-price");
-    this.buttonViewFlightsElement.addEventListener("click", function () {
-      window.open(
-        "https://www.skyscanner.com/", "_blank");
-      });
-    this.labelPriceElement = this.destinationForm.querySelector("label[for='price']");
-
     this.wasClicked = false;
 
     this.destinationForm.addEventListener("submit", this.handleSubmitDestination);
   }
 
-  onSubmit(getTripAdvisorDestination, getSkyscannerDestination) {
+  onSubmit(getTripAdvisorDestination) {
     this.getTripAdvisorDestination = getTripAdvisorDestination;
-    this.getSkyscannerDestination = getSkyscannerDestination;
   }
 
   setAppUserDestination(setAppsUserDestination){
@@ -95,7 +79,6 @@ class DestinationForm{
     if (this.userInputDestination) {
       this.hideElement(this.labelSubmitLocation);
       this.setAppsUserDestination(this.userInputDestination);
-      this.getSkyscannerDestination(this.userInputDestination);
       this.getTripAdvisorDestination(this.userInputDestination);
     } else {
       this.inputDestinationElement.placeholder = "New York";
@@ -165,7 +148,6 @@ class DestinationForm{
       this.labelSubmitLocation.textContent = `Lets find some flights from ${this.userOrigin} to ${this.userInputDestination}`;
       this.destinationForm.addEventListener("submit", this.handleSubmitFlight);
     } else {
-      this.labelSubmitLocation.textContent = `Lets find some attractions in ${userDestination}`;
       this.destinationForm.addEventListener("submit", this.handleSubmitDestination);
       this.hideElement(this.buttonViewFlightsElement);
       this.hideElement(this.labelPriceElement);
