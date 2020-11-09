@@ -23,7 +23,7 @@ class App{
   }
 
   setUserDestination(destination){
-    destinationGallery.updateCity(destination);
+    this.destinationGallery.updateCity(destination);
   }
   setDestinationId(destinationId){
     this.destinationId = destinationId;
@@ -36,7 +36,7 @@ class App{
         this.prices.push(data.Quotes[quoteIndex].MinPrice);
       }
     }
-    destinationGallery.updateFlightPrice(this.getMinPrice());
+    this.destinationForm.updatePrice(this.getMinPrice());
   }
 
   getMinPrice(){
