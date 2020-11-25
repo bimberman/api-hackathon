@@ -1,4 +1,3 @@
-var bannerElement = document.getElementById("banner");
 var destinationFormElement = document.getElementById("destination-form");
 var destinationGalleryElement = document.getElementById("destination-gallery");
 var galleryTitleElement = document.getElementById("gallery-title");
