@@ -15,6 +15,7 @@
 
 <body>
   <div class="d-flex flex-column" style="height:100vh">
+
     <header class="overflow-hidden d-flex align-items-center">
       <div class="overlay h-100 w-100"></div>
       <video class="d-xl-none" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
@@ -43,13 +44,17 @@
         </div>
       </div>
     </header>
+
+    <!-- A gallery of activities at the destination -->
     <section class="mb-auto">
       <div class="container">
         <div class="row d-flex justify-content-center">
           <h3 class="d-none" id="gallery-title">Finding attractions in <span class="city"></span></h3>
         </div>
         <div class="row d-flex justify-content-center" id="destination-gallery">
-
+        </div>
+        <div class="row d-flex justify-content-center my-5">
+          <button type="button" id="find-flight" data-toggle="modal" data-target="#flight-modal" class="btn btn-outline-info d-block find-flight-button">Find a Flight</button>
         </div>
       </div>
     </section>
@@ -64,9 +69,64 @@
         </div>
       </div>
     </footer>
+
   </div>
+
+  <!-- Modal -->
+  <div class="modal d-block flight-modal" id="flight-modal" tabindex="-1" role="dialog" aria-labelledby="flight-modal"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="flight-modal-title" id="flight-modal-title">Find Flights To: </h5>
+          <button type="button" id="x-close-flight-modal" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="flight-modal-form">
+            <form id="flight-modal-form">
+              <div class="form-group mb-0">
+                <label for="flight-modal-origin" class="h5">Your origin airport&#160;
+                <a href="#" class="tooltip" title="Please enter the departure airport code">
+                  <i class="fas fa-question-circle"></i>
+                </a>
+              </label>
+                <input type="text" class="form-control" name="flight-modal-origin" aria-describedby="flight-modal-origin-help">
+              </div>
+              <div class="form-group mb-0">
+                  <label for="flight-modal-destination" class="h5 destination-airport-label">Your destination airport&#160;
+                    <a href="#" class="tooltip" title="Please pick the appropriate destination airport code">
+                      <i class="fas fa-question-circle"></i>
+                    </a>
+                  </label>
+                  <select class="custom-select" name="flight-modal-destination" id="flight-modal-destination">
+                  </select>
+              </div>
+              <div class="form-group d-flex justify-content-between mb-0">
+                <div>
+                  <label for="departure-date" class="h5">Departure Date</label>
+                  <input type="date" class="form-control" name="departure-date"
+                    aria-describedby="departure-date-help">
+                </div>
+                <div>
+                  <label for="return-date" class="h5">Return Date</label>
+                  <input type="date" class="form-control" name="return-date" aria-describedby="return-date-help">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-info">Find Flight</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
   <script src="./src/js/Config.js"></script>
+  <script src="./src/js/components/FlightModal.js"></script>
   <script src="./src/js/components/DestinationGallery.js"></script>
   <script src="./src/js/components/DestinationForm.js"></script>
   <script src="./src/js/components/SkyscannerAPI.js"></script>
