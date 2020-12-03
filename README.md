@@ -16,22 +16,10 @@ Try the application live at [https://travelwise.benimberman.com](https://travelw
 
 ## Features
 
-- Teachers can view a list of recorded grades.
-- Teachers can view the average grade.
-- Teachers can add a grade to the table.
-- Teachers can delete a grade from the table.
-
-## Preview
-
-![SGT React](assets/sgt_react.gif)
+- User can enter destination city.
+- User can view the available attractions at the destination.
 
 ## Development
-
-### System Requirements
-
-- Node.js 10 or higher
-- NPM 6 or higher
-- MongoDB 4 or higher
 
 ### Getting Started
 
