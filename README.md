@@ -16,7 +16,7 @@ Try the application live at [https://travelwise.benimberman.com](https://travelw
 
 ## Preview
 
-![Live demo](https://raw.githubusercontent.com/bimberman/travelwise/master/live-demo.gif)
+![Live demo](https://raw.githubusercontent.com/bimberman/travelwise/master/live-demo.mp4)
 
 ## Features
 
