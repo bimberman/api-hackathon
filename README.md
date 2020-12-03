@@ -14,6 +14,10 @@ A front-end JavaScript application for travelers who want to see available attra
 
 Try the application live at [https://travelwise.benimberman.com](https://travelwise.benimberman.com)
 
+## Preview
+
+![Live demo](https://raw.githubusercontent.com/bimberman/travelwise/master/live-demo.gif)
+
 ## Features
 
 - User can enter destination city.
