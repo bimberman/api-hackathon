@@ -1,29 +1,29 @@
 class SkyscannerAPI {
   constructor(apikey){
     this.locationURL = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/US/USD/en-US/";
-    this.priceURLBase = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/LAXA-sky/"
-    this.priceURLDates = "/2020-08-01?inboundpartialdate=2020-08-02";
+    this.priceURLBase = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US"
     this.host = "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com";
     this.apikey = apikey;
     this.location_id;
 
-    this.getSkyscannerDestination = this.getSkyscannerDestination.bind(this);
-    this.handleSkyscannerDestinationSuccess = this.handleSkyscannerDestinationSuccess.bind(this);
-    this.handleSkyscannerDestinationError = this.handleSkyscannerDestinationError.bind(this);
+    this.getSkyscannerAirports = this.getSkyscannerAirports.bind(this);
+    this.handleSkyscannerAirportsSuccess = this.handleSkyscannerAirportsSuccess.bind(this);
+    this.handleSkyscannerAirportsError = this.handleSkyscannerAirportsError.bind(this);
 
     this.getPrices = this.getPrices.bind(this);
     this.handleGetPricesSuccess = this.handleGetPricesSuccess.bind(this);
     this.handleGetPricesError = this.handleGetPricesError.bind(this);
   }
 
-  sendPrices(appSetPrices){
-    this.setAppPrices = appSetPrices;
-  }
-  updatePrice(destinationGalleryUpdatePrice){
-    this.destinationGalleryUpdatePrice = destinationGalleryUpdatePrice;
+  sendPrices(setAppPrices){
+    this.sendAppPrices = setAppPrices;
   }
 
-  getSkyscannerDestination(destination) {
+  sendAirports(sendAppAirports){
+    this.sendAirports = sendAppAirports;
+  }
+
+  getSkyscannerAirports(city) {
     $.ajax({
       "async": true,
       "crossDomain": true,
@@ -34,28 +34,27 @@ class SkyscannerAPI {
         "x-rapidapi-key": this.apikey
       },
       data: {
-        query: destination
+        query: city
       },
-      success: this.handleSkyscannerDestinationSuccess,
-      error: this.handleSkyscannerDestinationError
+      success: this.handleSkyscannerAirportsSuccess,
+      error: this.handleSkyscannerAirportsError
     });
   }
 
-  handleSkyscannerDestinationSuccess(success) {
-    console.log(success);
-    this.destination = success.Places[0].PlaceId;
-    this.getPrices(this.destination);
+  handleSkyscannerAirportsSuccess(success) {
+    this.sendAirports(success.Places);
   }
 
-  handleSkyscannerDestinationError(err) {
+  handleSkyscannerAirportsError(err) {
     console.log(err);
   }
 
-  getPrices(destination) {
+  getPrices(oAirport, dAirport) {
+    console.log(`${this.priceURLBase}/${oAirport}-sky/${dAirport}-sky/anytime`)
     $.ajax({
       "async": true,
       "crossDomain": true,
-      "url": this.priceURLBase + destination + this.priceURLDates,
+      "url": `${this.priceURLBase}/${oAirport}-sky/${dAirport}-sky/anytime`,
       "method": "GET",
       "headers": {
         "x-rapidapi-host": this.host,
@@ -67,8 +66,7 @@ class SkyscannerAPI {
   }
 
   handleGetPricesSuccess(success) {
-    console.log(success);
-    this.setAppPrices(success);
+    this.sendAppPrices(success);
   }
 
   handleGetPricesError(err) {

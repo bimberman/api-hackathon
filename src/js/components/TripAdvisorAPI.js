@@ -13,7 +13,6 @@ class TripAdvisorAPI {
     this.getAttractions = this.getAttractions.bind(this);
     this.handleGetAttractionsSuccess = this.handleGetAttractionsSuccess.bind(this);
     this.handleGetAttractionsError = this.handleGetAttractionsError.bind(this);
-    this.handleGetAttractionsComplete = this.handleGetAttractionsComplete.bind(this);
   }
 
   updateGallery(galleryUpdateFunction){
@@ -44,7 +43,6 @@ class TripAdvisorAPI {
   }
 
   handlegetTripAdvisorDestinationSuccess(success) {
-    console.log(success);
     if(success && success.data && success.data.length){
       this.destinationId = success.data[0].result_object.location_id;
       this.destination = success.data[0].result_object.name;
@@ -81,7 +79,6 @@ class TripAdvisorAPI {
       },
       success: this.handleGetAttractionsSuccess,
       error: this.handleGetAttractionsError,
-      complete: this.handleGetAttractionsComplete
     });
   }
 
@@ -91,11 +88,5 @@ class TripAdvisorAPI {
 
   handleGetAttractionsError(err) {
     console.log(err);
-  }
-
-  handleGetAttractionsComplete(obj, status) {
-    if (status === "success"){
-
-    }
   }
 }

@@ -42,14 +42,19 @@ header .overlay {
   font-size: 1rem;
 }
 
-i{
-  text-decoration: underline;
-}
-
 #company-name{
   font-family: 'Pacifico', cursive;
 }
 
 #submit-location{
   color: white;
+}
+
+.flight-modal {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.tooltip{
+  display: inline;
+  opacity: 1;
 }

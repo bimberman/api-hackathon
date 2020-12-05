@@ -6,7 +6,6 @@ class DestinationGallery {
   }
 
   updateGallery(data){
-    let row = document.createElement("div");
     let destinationDiv;
     let name;
     let imageUrl;
@@ -35,6 +34,7 @@ class DestinationGallery {
           tripAdvisorLink = null;
           attractionLink = null;
           this.updateAttractionTitle("Destination: ");
+          this.displayElement(document.getElementById("find-flight"))
         }
       }
     } else {
@@ -43,13 +43,10 @@ class DestinationGallery {
   }
 
   createDestinationDiv(name, imageUrl, tripAdvisorLink, attractionLink){
-    let attractionImg = document.createElement("IMG");
     let imgLink = document.createElement("a");
     let tripAdvisorLinkEle = document.createElement("a");
     let attractionLinkEle = document.createElement("a");
-    let tripAdvisorSpan = document.createElement("span");
-    let seperatorSpan = document.createElement("span");
-    let attractionSpan = document.createElement("span");
+    let separatorSpan = document.createElement("span");
     let imgDiv = document.createElement("div");
     let linksDiv = document.createElement("div");
     let destinationDiv = document.createElement("div");
@@ -71,11 +68,11 @@ class DestinationGallery {
     attractionLinkEle.classList.add("attraction-link");
     attractionLinkEle.textContent = name;
 
-    seperatorSpan.textContent = "|";
+    separatorSpan.textContent = "|";
 
     linksDiv.classList.add("d-flex", "justify-content-center", "align-content-center");
 
-    linksDiv.append(attractionLinkEle, seperatorSpan, tripAdvisorLinkEle);
+    linksDiv.append(attractionLinkEle, separatorSpan, tripAdvisorLinkEle);
     destinationDiv.append(imgLink, linksDiv);
     destinationDiv.classList.add("m-2");
 
@@ -86,7 +83,6 @@ class DestinationGallery {
     if(destination){
       this.displayElement(this.galleryTitle);
       this.galleryTitle.querySelector("span.city").textContent = destination;
-
       this.updateAttractionTitle("Finding attractions in ");
       while (this.destinationGallery.firstChild) {
         this.destinationGallery.removeChild(this.destinationGallery.lastChild);
