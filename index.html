@@ -37,8 +37,8 @@
               <small id="destination-help" class="h6">Where would you like your next adventure to take you?</small>
             </div>
             <div class="form-group my-3 d-flex justify-content-end align-content-center">
-              <button type="submit" class="btn btn-outline-info" name="submit-location"
-                id="submit-location">Lets Go!</button>
+              <button type="submit" class="btn btn-outline-info" name="submit-location" id="submit-location">Lets
+                Go!</button>
             </div>
           </form>
         </div>
@@ -54,7 +54,8 @@
         <div class="row d-flex justify-content-center" id="destination-gallery">
         </div>
         <div class="row d-flex justify-content-center my-5">
-          <button type="button" id="find-flight" data-toggle="modal" data-target="#flight-modal" class="btn btn-outline-info d-block find-flight-button">Find a Flight</button>
+          <button type="button" id="find-flight" data-toggle="modal" data-target="#flight-modal"
+            class="btn btn-outline-info d-none find-flight-button">Find a Flight</button>
         </div>
       </div>
     </section>
@@ -63,7 +64,8 @@
       <div class="row bg-dark text-white-50 w-100 d-flex justify-content-end m-0 p-0">
         <div class="d-flex justify-content-end">
           <p class="col-lg-4 text-right p-0 m-2">Video with courtesy of</p>
-          <a href="https://pixabay.com/videos/landscape-travel-blue-tropical-35757/" target="_blank" class="col-2 m-0 p-0">
+          <a href="https://pixabay.com/videos/landscape-travel-blue-tropical-35757/" target="_blank"
+            class="col-2 m-0 p-0">
             <img src="./assets/images/pixabay_logo_square.svg" alt="" class="col-8 m-0 p-0">
           </a>
         </div>
@@ -88,37 +90,55 @@
             <form id="flight-modal-form">
               <div class="form-group mb-0">
                 <label for="flight-modal-origin" class="h5">Your origin airport&#160;
-                <a href="#" class="tooltip" title="Please enter the departure airport code">
-                  <i class="fas fa-question-circle"></i>
-                </a>
-              </label>
-                <input type="text" class="form-control" name="flight-modal-origin" aria-describedby="flight-modal-origin-help">
+                  <a href="#" class="tooltip" title="Please enter the origin airport code">
+                    <i class="fas fa-question-circle"></i>
+                  </a>
+                </label>
+                <input type="text" class="form-control" name="flight-modal-origin" id="flight-modal-origin"
+                  aria-describedby="flight-modal-origin-help">
               </div>
               <div class="form-group mb-0">
-                  <label for="flight-modal-destination" class="h5 destination-airport-label">Your destination airport&#160;
-                    <a href="#" class="tooltip" title="Please pick the appropriate destination airport code">
-                      <i class="fas fa-question-circle"></i>
-                    </a>
-                  </label>
-                  <select class="custom-select" name="flight-modal-destination" id="flight-modal-destination">
-                  </select>
+                <label for="flight-modal-destination" class="h5 destination-airport-label">Your destination
+                  airport&#160;
+                  <a href="#" class="tooltip"
+                    title="Please pick the appropriate destination airport code from the options below">
+                    <i class="fas fa-question-circle"></i>
+                  </a>
+                </label>
+                <select class="custom-select" name="flight-modal-destination" id="flight-modal-destination">
+                </select>
               </div>
-              <div class="form-group d-flex justify-content-between mb-0">
+              <hr/>
+              <div class="form-group d-md-flex justify-content-between mb-0">
                 <div>
-                  <label for="departure-date" class="h5">Departure Date</label>
-                  <input type="date" class="form-control" name="departure-date"
+                  <label for="departure-date" class="h5">Departure Date
+                  </label>
+                  <input type="date" class="form-control d-none" id="departure-date" name="departure-date"
                     aria-describedby="departure-date-help">
                 </div>
                 <div>
-                  <label for="return-date" class="h5">Return Date</label>
-                  <input type="date" class="form-control" name="return-date" aria-describedby="return-date-help">
+                  <label for="return-date" class="h5">Return Date
+                  </label>
+                  <input type="date" class="form-control d-none" id="return-date" name="return-date"
+                    aria-describedby="return-date-help">
                 </div>
               </div>
             </form>
           </div>
+          <hr class="d-none" />
+          <!-- A gallery of flights and prices to the destination -->
+          <section class="mb-auto">
+            <div class="container">
+              <div class="row d-flex justify-content-center">
+                <h3 class="d-none" id="flight-gallery-title">Looking for prices</h3>
+              </div>
+              <div class="row d-flex justify-content-center" id="flight-gallery">
+              </div>
+            </div>
+          </section>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-info">Find Flight</button>
+          <button type="submit" class="btn btn-outline-info" id="submit-flight">Lets Go!</button>
         </div>
       </div>
     </div>
@@ -126,7 +146,8 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
   <script src="./src/js/Config.js"></script>
-  <script src="./src/js/components/FlightModal.js"></script>
+  <script src="./src/js/components/FlightModalForm.js"></script>
+  <script src="./src/js/components/FlightModalPriceList.js"></script>
   <script src="./src/js/components/DestinationGallery.js"></script>
   <script src="./src/js/components/DestinationForm.js"></script>
   <script src="./src/js/components/SkyscannerAPI.js"></script>

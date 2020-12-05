@@ -1,9 +1,7 @@
 class SkyscannerAPI {
   constructor(apikey){
-    this.currentDate = (new Date()).toISOString().split('T')[0];
-    this.futureDate = ""
     this.locationURL = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/US/USD/en-US/";
-    this.priceURLBase = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US/LAXA-sky/"
+    this.priceURLBase = "https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsequotes/v1.0/US/USD/en-US"
     this.host = "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com";
     this.apikey = apikey;
     this.location_id;
@@ -17,12 +15,12 @@ class SkyscannerAPI {
     this.handleGetPricesError = this.handleGetPricesError.bind(this);
   }
 
-  sendPrices(appSetPrices){
-    this.setAppPrices = appSetPrices;
+  sendPrices(setAppPrices){
+    this.sendAppPrices = setAppPrices;
   }
 
-  sendAirports(appAirports){
-    this.appAirports = appAirports;
+  sendAirports(sendAppAirports){
+    this.sendAirports = sendAppAirports;
   }
 
   getSkyscannerAirports(city) {
@@ -38,8 +36,8 @@ class SkyscannerAPI {
       data: {
         query: city
       },
-      success: this.handleSkyscannerDestinationSuccess,
-      error: this.handleSkyscannerDestinationError
+      success: this.handleSkyscannerAirportsSuccess,
+      error: this.handleSkyscannerAirportsError
     });
   }
 
@@ -51,11 +49,12 @@ class SkyscannerAPI {
     console.log(err);
   }
 
-  getPrices(origin, destination, departureDate, returnDate) {
+  getPrices(oAirport, dAirport) {
+    console.log(`${this.priceURLBase}/${oAirport}-sky/${dAirport}-sky/anytime`)
     $.ajax({
       "async": true,
       "crossDomain": true,
-      "url": `/${departureDate}?inboundpartialdate=${returnDate}` + destination + this.priceURLDates,
+      "url": `${this.priceURLBase}/${oAirport}-sky/${dAirport}-sky/anytime`,
       "method": "GET",
       "headers": {
         "x-rapidapi-host": this.host,
@@ -67,7 +66,7 @@ class SkyscannerAPI {
   }
 
   handleGetPricesSuccess(success) {
-    this.setAppPrices(success);
+    this.sendAppPrices(success);
   }
 
   handleGetPricesError(err) {
