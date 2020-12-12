@@ -49,7 +49,7 @@
     <section class="mb-auto">
       <div class="container">
         <div class="row d-flex justify-content-center">
-          <h3 class="d-none" id="gallery-title">Finding attractions in <span class="city"></span></h3>
+          <h3 class="d-none my-4" id="gallery-title">Finding attractions in <span class="city"></span></h3>
         </div>
         <div class="row d-flex justify-content-center" id="destination-gallery">
         </div>
@@ -75,7 +75,7 @@
   </div>
 
   <!-- Modal -->
-  <div class="modal d-block flight-modal" id="flight-modal" tabindex="-1" role="dialog" aria-labelledby="flight-modal"
+  <div class="modal d-none flight-modal" id="flight-modal" tabindex="-1" role="dialog" aria-labelledby="flight-modal"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -89,13 +89,23 @@
           <div class="flight-modal-form">
             <form id="flight-modal-form">
               <div class="form-group mb-0">
-                <label for="flight-modal-origin" class="h5">Your origin airport&#160;
-                  <a href="#" class="tooltip" title="Please enter the origin airport code">
+                <label for="flight-modal-origin-city" class="h5">Your origin City&#160;
+                  <a href="#" class="tooltip" title="Please enter the origin city">
                     <i class="fas fa-question-circle"></i>
                   </a>
                 </label>
-                <input type="text" class="form-control" name="flight-modal-origin" id="flight-modal-origin"
-                  aria-describedby="flight-modal-origin-help">
+                <input type="text" class="form-control" name="flight-modal-origin-city" id="flight-modal-origin-city"
+                  aria-describedby="flight-modal-origin-city-help">
+              </div>
+              <div class="form-group mb-0">
+                <label for="flight-modal-origin" class="h5 destination-airport-label">Your origin
+                  airport&#160;
+                  <a href="#" class="tooltip" title="Please enter your origin city and the appropriate airport code options will appear below">
+                    <i class="fas fa-question-circle"></i>
+                  </a>
+                </label>
+                <select class="custom-select" name="flight-modal-origin" id="flight-modal-origin">
+                </select>
               </div>
               <div class="form-group mb-0">
                 <label for="flight-modal-destination" class="h5 destination-airport-label">Your destination
