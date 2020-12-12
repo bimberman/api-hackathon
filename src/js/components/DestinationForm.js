@@ -31,12 +31,20 @@ class DestinationForm{
     const userDestination = formData.get("destination") ||
                           this.inputDestinationElement.placeholder;
     if (userDestination){
-        this.userInputDestination = userDestination;
+        this.userInputDestination = this.toTitleCase(userDestination);
         this.setAppsUserDestination(this.userInputDestination);
         this.getTripAdvisorDestination(this.userInputDestination);
       }
 
     this.wasClicked = true;
+  }
+
+  toTitleCase(str){
+    return str
+      .toLowerCase()
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
   }
 
   displayElement(element){
