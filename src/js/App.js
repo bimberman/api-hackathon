@@ -1,14 +1,15 @@
 class App{
-  constructor(tripAdvisorAPI, skyscannerAPI, destinationForm, destinationGallery, flightModalForm, flightModalPriceList){
+  constructor(tripAdvisorAPI, skyscannerAPI, flightForm, destinationGallery, flightModalForm, flightModalPriceList){
     this.tripAdvisorAPI = tripAdvisorAPI;
     this.skyscannerAPI = skyscannerAPI;
-    this.destinationForm = destinationForm;
+    this.flightForm = flightForm;
     this.destinationGallery = destinationGallery;
     this.flightModalForm = flightModalForm;
     this.flightModalPriceList = flightModalPriceList;
 
     this.setDestinationId = this.setDestinationId.bind(this);
     this.setUserDestination = this.setUserDestination.bind(this);
+    this.setUserOrigin = this.setUserOrigin.bind(this);
     this.setAirports = this.setAirports.bind(this);
     this.getPrices = this.getPrices.bind(this);
     this.setPrices = this.setPrices.bind(this);
@@ -19,28 +20,34 @@ class App{
     this.skyscannerAPI.sendPrices(this.setPrices)
     this.skyscannerAPI.sendAirports(this.setAirports)
 
-    this.destinationForm.onSubmit(this.tripAdvisorAPI.getTripAdvisorDestination);
-    this.destinationForm.setAppUserDestination(this.setUserDestination);
+    this.flightForm.onSubmit(this.tripAdvisorAPI.getTripAdvisorDestination);
+    this.flightForm.setAppUserDestination(this.setUserDestination);
+    this.flightForm.setAppUserOrigin(this.setUserOrigin);
+    this.flightForm.openModal(this.flightModalForm.openModal);
 
     this.tripAdvisorAPI.sendDestinationId(this.setDestinationId);
     this.tripAdvisorAPI.updateGallery(this.destinationGallery.updateGallery);
 
-    this.flightModalForm.getSkyscannerAirportCodes(this.skyscannerAPI.getSkyscannerAirports)
+    this.flightModalForm.getSkyscannerDestinationAirportCodes(this.skyscannerAPI.getSkyscannerDestinationAirports)
+    this.flightModalForm.getSkyscannerOriginAirportCodes(this.skyscannerAPI.getSkyscannerOriginAirports)
     this.flightModalForm.getAppPrice(this.getPrices)
   }
 
   setUserDestination(destination){
     this.destinationGallery.updateCity(destination);
-    this.flightModalForm.setDestination(destination);
-    this.skyscannerAPI.getSkyscannerAirports(destination);
+    this.flightModalForm.setCity(destination, false);
+  }
+
+  setUserOrigin(origin) {
+    this.flightModalForm.setCity(origin, true);
   }
 
   setDestinationId(destinationId){
     this.destinationId = destinationId;
   }
 
-  setAirports(airports){
-    this.flightModalForm.setAirports(airports)
+  setAirports(airports, isOrigin){
+    this.flightModalForm.setAirports(airports, isOrigin)
   }
 
   getPrices(oAirport, dAirport, dDate, rDate){
