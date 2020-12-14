@@ -58,11 +58,3 @@ header .overlay {
   display: inline;
   opacity: 1;
 }
-
-.modal-dialog {
-    max-width: 800px;
-}
-
-.select-airports{
-  max-width: 500px;
-}
