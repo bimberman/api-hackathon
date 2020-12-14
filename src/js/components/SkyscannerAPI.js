@@ -6,9 +6,13 @@ class SkyscannerAPI {
     this.apikey = apikey;
     this.location_id;
 
-    this.getSkyscannerAirports = this.getSkyscannerAirports.bind(this);
-    this.handleSkyscannerAirportsSuccess = this.handleSkyscannerAirportsSuccess.bind(this);
-    this.handleSkyscannerAirportsError = this.handleSkyscannerAirportsError.bind(this);
+    this.getSkyscannerDestinationAirports = this.getSkyscannerDestinationAirports.bind(this);
+    this.handleSkyscannerDestinationAirportsSuccess = this.handleSkyscannerDestinationAirportsSuccess.bind(this);
+    this.handleSkyscannerDestinationAirportsError = this.handleSkyscannerDestinationAirportsError.bind(this);
+
+    this.getSkyscannerOriginAirports = this.getSkyscannerOriginAirports.bind(this);
+    this.handleSkyscannerOriginAirportsSuccess = this.handleSkyscannerOriginAirportsSuccess.bind(this);
+    this.handleSkyscannerOriginAirportsError = this.handleSkyscannerOriginAirportsError.bind(this);
 
     this.getPrices = this.getPrices.bind(this);
     this.handleGetPricesSuccess = this.handleGetPricesSuccess.bind(this);
@@ -23,7 +27,7 @@ class SkyscannerAPI {
     this.sendAirports = sendAppAirports;
   }
 
-  getSkyscannerAirports(city) {
+  getSkyscannerDestinationAirports(city) {
     $.ajax({
       "async": true,
       "crossDomain": true,
@@ -36,16 +40,42 @@ class SkyscannerAPI {
       data: {
         query: city
       },
-      success: this.handleSkyscannerAirportsSuccess,
-      error: this.handleSkyscannerAirportsError
+      success: this.handleSkyscannerDestinationAirportsSuccess,
+      error: this.handleSkyscannerDestinationAirportsError
     });
   }
 
-  handleSkyscannerAirportsSuccess(success) {
-    this.sendAirports(success.Places);
+  handleSkyscannerDestinationAirportsSuccess(success) {
+    this.sendAirports(success.Places, false);
   }
 
-  handleSkyscannerAirportsError(err) {
+  handleSkyscannerDestinationAirportsError(err) {
+    console.log(err);
+  }
+
+  getSkyscannerOriginAirports(city) {
+    $.ajax({
+      "async": true,
+      "crossDomain": true,
+      "url": this.locationURL,
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-host": this.host,
+        "x-rapidapi-key": this.apikey
+      },
+      data: {
+        query: city
+      },
+      success: this.handleSkyscannerOriginAirportsSuccess,
+      error: this.handleSkyscannerOriginAirportsError
+    });
+  }
+
+  handleSkyscannerOriginAirportsSuccess(success) {
+    this.sendAirports(success.Places, true);
+  }
+
+  handleSkyscannerOriginAirportsError(err) {
     console.log(err);
   }
 
