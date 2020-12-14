@@ -34,7 +34,7 @@ class DestinationGallery {
           tripAdvisorLink = null;
           attractionLink = null;
           this.updateAttractionTitle("Destination: ");
-          this.displayElement(document.getElementById("origin-form"))
+          // this.displayElement(document.getElementById("find-flight"))
         }
       }
     } else {

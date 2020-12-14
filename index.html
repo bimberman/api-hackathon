@@ -37,7 +37,7 @@
               <small id="destination-help" class="h6">Where would you like your next adventure to take you?</small>
             </div>
             <div class="form-group my-3 d-flex justify-content-end align-content-center">
-              <button type="submit" class="btn btn-outline-info" name="submit-destination" id="submit-destination">Lets
+              <button type="submit" class="btn btn-outline-info" name="submit-location" id="submit-location">Lets
                 Go!</button>
             </div>
           </form>
@@ -54,15 +54,8 @@
         <div class="row d-flex justify-content-center" id="destination-gallery">
         </div>
         <div class="row d-flex justify-content-center my-5">
-          <form class="d-none d-flex col-7" id="origin-form">
-            <div class="form-group mb-0 col-9 mx-3">
-              <label for="origin" class="h5">To find flights, please enter your origin <i>city</i></label>
-              <input type="text" class="form-control" placeholder="Los Angeles" name="origin" aria-describedby="origin-help">
-            </div>
-            <div class="form-group my-0 d-flex justify-content-end align-content-end">
-              <button type="submit" class="btn btn-outline-info mt-auto" name="submit-origin" id="submit-origin">Find a Flight</button>
-            </div>
-          </form>
+          <button type="button" id="find-flight" data-toggle="modal" data-target="#flight-modal"
+            class="btn btn-outline-info d-none find-flight-button">Find a Flight</button>
         </div>
       </div>
     </section>
@@ -82,7 +75,7 @@
   </div>
 
   <!-- Modal -->
-  <div class="modal d-block flight-modal" id="flight-modal" tabindex="-1" role="dialog" aria-labelledby="flight-modal"
+  <div class="modal d-none flight-modal" id="flight-modal" tabindex="-1" role="dialog" aria-labelledby="flight-modal"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -95,13 +88,19 @@
         <div class="modal-body">
           <div class="flight-modal-form">
             <form id="flight-modal-form">
-              <div class="select-airports d-flex flex-column justify-content-center mx-auto">
-
-                <div class="form-group mb-0">
-                  <label for="flight-modal-origin" class="h5 destination-airport-label">Your origin
-                    airport&#160;
-                    <a href="#" class="tooltip"
-                    title="Please select the appropriate destination airport code from the options below">
+              <div class="form-group mb-0">
+                <label for="flight-modal-origin-city" class="h5">Your origin City&#160;
+                  <a href="#" class="tooltip" title="Please enter the origin city">
+                    <i class="fas fa-question-circle"></i>
+                  </a>
+                </label>
+                <input type="text" class="form-control" name="flight-modal-origin-city" id="flight-modal-origin-city"
+                  aria-describedby="flight-modal-origin-city-help">
+              </div>
+              <div class="form-group mb-0">
+                <label for="flight-modal-origin" class="h5 destination-airport-label">Your origin
+                  airport&#160;
+                  <a href="#" class="tooltip" title="Please enter your origin city and the appropriate airport code options will appear below">
                     <i class="fas fa-question-circle"></i>
                   </a>
                 </label>
@@ -112,24 +111,23 @@
                 <label for="flight-modal-destination" class="h5 destination-airport-label">Your destination
                   airport&#160;
                   <a href="#" class="tooltip"
-                  title="Please select the appropriate destination airport code from the options below">
-                  <i class="fas fa-question-circle"></i>
-                </a>
-              </label>
-              <select class="custom-select" name="flight-modal-destination" id="flight-modal-destination">
-              </select>
-            </div>
-          </div>
+                    title="Please pick the appropriate destination airport code from the options below">
+                    <i class="fas fa-question-circle"></i>
+                  </a>
+                </label>
+                <select class="custom-select" name="flight-modal-destination" id="flight-modal-destination">
+                </select>
+              </div>
               <hr/>
               <div class="form-group d-md-flex justify-content-between mb-0">
                 <div>
-                  <label for="departure-date" class="h5">Departure
+                  <label for="departure-date" class="h5">Departure Date
                   </label>
                   <input type="date" class="form-control d-none" id="departure-date" name="departure-date"
                     aria-describedby="departure-date-help">
                 </div>
                 <div>
-                  <label for="return-date" class="h5">Arrival
+                  <label for="return-date" class="h5">Return Date
                   </label>
                   <input type="date" class="form-control d-none" id="return-date" name="return-date"
                     aria-describedby="return-date-help">
@@ -150,7 +148,7 @@
           </section>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-outline-info" id="submit-flight">Find Flights</button>
+          <button type="submit" class="btn btn-outline-info" id="submit-flight">Lets Go!</button>
         </div>
       </div>
     </div>
@@ -161,7 +159,7 @@
   <script src="./src/js/components/FlightModalForm.js"></script>
   <script src="./src/js/components/FlightModalPriceList.js"></script>
   <script src="./src/js/components/DestinationGallery.js"></script>
-  <script src="./src/js/components/FlightForm.js"></script>
+  <script src="./src/js/components/DestinationForm.js"></script>
   <script src="./src/js/components/SkyscannerAPI.js"></script>
   <script src="./src/js/components/TripAdvisorAPI.js"></script>
   <script src="./src/js/App.js"></script>
