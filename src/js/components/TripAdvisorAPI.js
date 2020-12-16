@@ -54,6 +54,10 @@ class TripAdvisorAPI {
 
   handlegetTripAdvisorDestinationError(err) {
     console.log(err);
+    if (err.status===0){
+      const galleryTitleEle = document.getElementById("gallery-title");
+      galleryTitleEle.textContent = "Could not complete the search, check your connection";
+    }
   }
 
   getAttractions(destinationId) {
