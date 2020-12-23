@@ -56,7 +56,10 @@ class TripAdvisorAPI {
     console.log(err);
     if (err.status===0){
       const galleryTitleEle = document.getElementById("gallery-title");
-      galleryTitleEle.textContent = "Could not complete the search, check your connection";
+      const cityEle = document.querySelector("span.city")
+      cityEle.textContent = "";
+      galleryTitleEle.textContent = "Could not complete the search. Please fix your connection and try again.";
+      galleryTitleEle.appendChild(cityEle)
     }
   }
 
