@@ -2,7 +2,6 @@
 
 A front-end JavaScript application for travelers who want to see available attraction at their destination before booking their flights.
 
-
 ## Technologies Used
 
 ![HTML5](https://icongr.am/devicon/html5-original-wordmark.svg?size=128&color=currentColor) 
